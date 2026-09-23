@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GOGFake — Ofertas</title><link rel="stylesheet" href="assets/css/gogfake.css"></head>
+<body><header class="gf-header"><div class="gf-shell gf-nav"><a class="gf-logo" href="index.html">GOGFake</a><nav class="gf-menu" aria-label="Navegação principal"><a href="index.html">Jogos</a><a class="active" href="ofertas.html">Ofertas</a><a href="ofertas.html?ordem=nome">Clássicos</a><a href="ofertas.html?destaque=lancamento">Novidades</a></nav><form class="gf-search" data-gf-search><input aria-label="Pesquisar jogos" placeholder="Pesquisar jogos..."><button type="submit">⌕</button></form><a class="gf-login" href="../pages/login.html">Login</a><a class="gf-cart" href="#">Carrinho (0)</a></div></header>
+<main class="gf-shell"><section class="gf-section"><span class="gf-kicker">Catálogo GOGFake</span><h1>Ofertas especiais</h1><p class="gf-detail-copy">Encontre sua próxima aventura com preços simulados, transparentes e diferentes das demais lojas do GameSearch.</p><form class="gf-filters" data-gf-filters><label>Gênero <select name="genero"><option value="">Todos</option><option>RPG / Ação</option><option>RPG / Fantasia</option><option>Ação / Aventura</option><option>RPG</option><option>Plataforma</option><option>Puzzle / Ficção científica</option><option>Terror / Ação</option><option>Corrida</option></select></label><label>Preço máximo <input name="preco" type="number" min="0" placeholder="R$"></label><label>Ordenar <select name="ordem"><option value="preco">Menor preço</option><option value="maior-desconto">Maior desconto</option><option value="nome">Nome</option></select></label></form><div id="gf-jogos" class="gf-grid"></div></section></main><footer class="gf-footer"><div class="gf-shell">GOGFake · Fonte simulada de preços do GameSearch.</div></footer><script src="assets/js/gogfake.js"></script><footer class="site-footer">
+    <div class="site-footer__glow"></div>
+
+    <div class="site-footer__container">
+
+        <!-- Identidade -->
+        <div class="site-footer__brand">
+            <a href="index.html"
+               class="site-footer__logo"
+               aria-label="Game Search - Início">
+                <img src="assets/img/logo.png" alt="Game Search">
+            </a>
+
+            <p class="site-footer__slogan">
+                Sua próxima aventura começa aqui.
+            </p>
+
+            <p class="site-footer__description">
+                Encontre, compare e descubra seus próximos jogos
+                em um só lugar.
+            </p>
+        </div>
+
+        <!-- Explorar -->
+        <div class="site-footer__column">
+            <h3>Explorar</h3>
+
+            <a href="index.html">
+                <i class="fas fa-house"></i>
+                Início
+            </a>
+
+            <a href="pages/biblioteca.html">
+                <i class="fas fa-book"></i>
+                Biblioteca
+            </a>
+
+            <a href="pages/sobre.html">
+                <i class="fas fa-compass"></i>
+                Sobre nós
+            </a>
+        </div>
+
+        <!-- Conta -->
+        <div class="site-footer__column">
+            <h3>Minha conta</h3>
+
+            <a href="pages/perfil.html">
+                <i class="fas fa-user"></i>
+                Perfil
+            </a>
+
+            <a href="pages/configuracao.html">
+                <i class="fas fa-gear"></i>
+                Configurações
+            </a>
+
+            <a href="pages/feedback.html">
+                <i class="fas fa-comment-dots"></i>
+                Feedback
+            </a>
+        </div>
+
+        <!-- Suporte -->
+        <div class="site-footer__column">
+            <h3>Suporte</h3>
+
+            <a href="pages/ajuda.html">
+                <i class="fas fa-circle-question"></i>
+                Ajuda
+            </a>
+
+            <a href="pages/feedback.html">
+                <i class="fas fa-message"></i>
+                Fale conosco
+            </a>
+
+            <button type="button" class="footer-topo" id="btnVoltarTopo">
+                <i class="fas fa-arrow-up"></i>
+                Voltar ao topo
+            </button>
+        </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+        <div class="site-footer__line"></div>
+
+        <div class="site-footer__bottom-content">
+            <span>© 2026 Game Search</span>
+
+            <span class="site-footer__status">
+                <i class="fas fa-circle"></i>
+                Sua próxima aventura começa aqui
+            </span>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('btnVoltarTopo')?.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+</script>
+</body></html>

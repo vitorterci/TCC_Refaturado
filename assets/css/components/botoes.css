@@ -1,0 +1,50 @@
+/* ─── Botões padrão ─── */
+.btn,
+button,
+a {
+  transition: all var(--transition-speed) ease;
+}
+
+.btn-primario {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-destaque);
+  border: none;
+  padding: 10px 28px;
+  border-radius: var(--border-radius-xl);
+  font-family: var(--font-corpo);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  cursor: pointer;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primario:hover {
+  background-color: var(--cor-primaria-hover);
+  color: var(--cor-texto-sobre-destaque-hover);
+  box-shadow: var(--shadow-glow-hover);
+  transform: translateY(-2px);
+}
+
+.btn-primario:active {
+  transform: translateY(0);
+}
+
+.btn-secundario {
+  background-color: var(--cor-tag);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  padding: 10px 28px;
+  border-radius: var(--border-radius-xl);
+  font-family: var(--font-corpo);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.btn-secundario:hover {
+  background-color: var(--cor-hover);
+  border-color: var(--cor-primaria);
+}

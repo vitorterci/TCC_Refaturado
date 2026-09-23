@@ -1,0 +1,176 @@
+/* ─── CONFIGURAÇÃO SPECIFIC STYLES ──────────────────────────────────────────── */
+
+.secao-config {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.painel-config {
+    background-color: var(--cor-lateral);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.painel-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--cor-borda);
+    background-color: rgba(46, 0, 230, 0.05);
+}
+
+.painel-header i {
+    color: var(--cor-texto-destaque);
+}
+
+.painel-header h2 {
+    font-family: var(--font-nav);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.painel-corpo {
+    display: flex;
+    flex-direction: column;
+}
+
+.opcao-config {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--cor-borda);
+    transition: background-color var(--transition-fast);
+}
+
+.opcao-config:last-child {
+    border-bottom: none;
+}
+
+.opcao-config:hover {
+    background-color: var(--cor-hover);
+}
+
+.opcao-texto {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.opcao-titulo {
+    font-weight: 700;
+    font-size: var(--fs-base);
+}
+
+.opcao-descricao {
+    font-size: var(--fs-xs);
+    color: var(--cor-texto-muted);
+}
+
+/* Toggle Switch Standardized */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--cor-tag);
+    transition: .4s;
+    border-radius: 34px;
+    border: 1px solid var(--cor-borda);
+}
+
+.toggle-slider::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 2px;
+    background-color: var(--cor-texto-muted);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-sobre-destaque);
+}
+
+input:checked + .toggle-slider::before {
+    transform: translateX(22px);
+    background-color: var(--cor-texto-sobre-destaque);
+}
+
+/* Color Circles */
+.cores-tema {
+    display: flex;
+    gap: 8px;
+}
+
+.bolinha-cor {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform var(--transition-fast);
+}
+
+.bolinha-cor:hover {
+    transform: scale(1.2);
+}
+
+.bolinha-cor.ativa {
+    border-color: white;
+}
+
+/* Danger Zone */
+.zona-perigo .painel-header {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.zona-perigo .painel-header i,
+.zona-perigo .painel-header h2 {
+    color: #ef4444;
+}
+
+.btn-perigo {
+    background: none;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 6px 16px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-nav);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-perigo:hover {
+    background-color: #ef4444;
+    color: white;
+}

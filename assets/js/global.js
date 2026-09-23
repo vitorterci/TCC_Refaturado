@@ -60,6 +60,7 @@ window.obterCaminhoImagem = function (imagem, slug) {
         'core/tema.js',
         'core/contraste.js',
         'core/animacoes.js',
+        'core/historico.js',
         'busca/busca.js',
         'censura.js',
         'footer.js'

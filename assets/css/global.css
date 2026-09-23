@@ -10,6 +10,7 @@
 @import url("./components/classificacao-etaria.css");
 @import url("./components/filtros.css");
 @import url("./components/grids.css");
+@import url("./components/historico.css");   /* ← NOVO */
 @import url("./components/painel-contextual.css");
 @import url("./components/precos.css");
 @import url("./components/tags.css");

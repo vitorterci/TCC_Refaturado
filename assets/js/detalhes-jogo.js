@@ -21,11 +21,27 @@
     };
 
     const preencherJogo = (jogo) => {
-        jogoAtual = jogo;
-        const texto = (seletor, valor) => {
-            const elemento = document.querySelector(seletor);
-            if (elemento) elemento.textContent = valor ?? '';
-        };
+    jogoAtual = jogo;
+
+    /* Registro inicial no histórico (preço provisório).
+       O preço real é atualizado logo depois em renderizarOfertas(),
+       reaproveitando o menor preço já calculado na comparação. */
+    if (window.Historico && typeof window.Historico.adicionar === 'function') {
+        window.Historico.adicionar({
+            id: jogo.id,
+            slug: jogo.slug,
+            nome: jogo.nome,
+            imagem: jogo.img,
+            preco: 'Grátis'
+        });
+    }
+
+    const texto = (seletor, valor) => {
+        const elemento = document.querySelector(seletor);
+        if (elemento) elemento.textContent = valor ?? '';
+    };
+    // ... restante inalterado
+
         texto('#jogo-titulo', jogo.nome || 'Jogo não encontrado');
         texto('#breadcrumb-nome', jogo.nome || 'Jogo');
         texto('#jogo-plataforma', jogo.plataforma || 'Não informado');
@@ -154,13 +170,33 @@
     };
 
     const renderizarOfertas = (dados) => {
-        const lista = document.querySelector('#lista-precos');
-        const contador = document.querySelector('#totalPlataformas');
-        const atualizado = document.querySelector('#atualizado-precos');
-        if (!lista) return;
+    const lista = document.querySelector('#lista-precos');
+    const contador = document.querySelector('#totalPlataformas');
+    const atualizado = document.querySelector('#atualizado-precos');
+    if (!lista) return;
 
-        const ofertas = window.obterOfertasComparadas(dados);
-        const menorPreco = ofertas.length ? ofertas[0].preco : null;
+    const ofertas = window.obterOfertasComparadas(dados);
+    const menorPreco = ofertas.length ? ofertas[0].preco : null;
+
+    /* Atualiza o registro do histórico com o menor preço já calculado.
+       Reaproveita o mesmo fluxo de ofertas — nenhuma consulta nova.
+       O dedupe do Historico.adicionar() evita duplicar o item. */
+    if (jogoAtual && window.Historico && typeof window.Historico.adicionar === 'function') {
+        const precoFormatado = menorPreco != null && typeof window.formatarMoeda === 'function'
+            ? window.formatarMoeda(menorPreco)
+            : 'Grátis';
+        window.Historico.adicionar({
+            id: jogoAtual.id,
+            slug: jogoAtual.slug,
+            nome: jogoAtual.nome,
+            imagem: jogoAtual.img,
+            preco: precoFormatado
+        });
+    }
+
+    if (contador) contador.textContent = `${ofertas.length} ${ofertas.length === 1 ? 'oferta' : 'ofertas'}`;
+    // ... restante inalterado
+};
         if (contador) contador.textContent = `${ofertas.length} ${ofertas.length === 1 ? 'oferta' : 'ofertas'}`;
         if (atualizado) atualizado.textContent = dados.precos_simulados
             ? 'Preços simulados das lojas parceiras'

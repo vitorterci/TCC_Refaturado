@@ -1,4 +1,5 @@
 /* Folhas compartilhadas já separadas por componente e layout. */
+@import url("./core/temas.css");
 @import url("./components/botoes.css");
 @import url("./components/breadcrumb.css");
 @import url("./components/busca.css");

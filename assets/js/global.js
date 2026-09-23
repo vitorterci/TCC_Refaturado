@@ -69,9 +69,10 @@ window.obterCaminhoImagem = function (imagem, slug) {
     ).join(''));
 })();
 
-// Executar aplicação de preferências imediatamente para evitar FOUC (Flash of Unstyled Content)
-if (document.body) {
-    window.Preferencias.aplicarTudo();
-} else {
-    document.addEventListener('DOMContentLoaded', () => window.Preferencias.aplicarTudo());
-}
+// Aplicar preferências somente após os módulos core injetados acima estarem disponíveis.
+const aplicarPreferenciasGlobais = () => {
+    if (window.Preferencias && typeof window.Preferencias.aplicarTudo === 'function') {
+        window.Preferencias.aplicarTudo();
+    }
+};
+document.addEventListener('DOMContentLoaded', aplicarPreferenciasGlobais, { once: true });

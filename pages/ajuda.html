@@ -6,6 +6,8 @@
     <meta name="base-path" content="../" />
     <title>Game Search — Central de Ajuda</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/PixelBlast.css" />
+    ../assets/js/PixelBlast.js
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -201,7 +203,7 @@
         line-height: 1.55;
       }
 
-      .ajuda-lista li:: {
+      .ajuda-lista li::before {
         position: absolute;
         top: 0.55em;
         left: 3px;
@@ -307,11 +309,10 @@
                   ><span>Início</span></a
                 >
               </li>
-                <li>
+              <li>
                 <a href="Apresentação.html"
-                                 ><i class="fas fa-layer-group"></i><span>Apresentação</span></a
-
-               
+                  ><i class="fas fa-layer-group"></i
+                  ><span>Apresentação</span></a
                 >
               </li>
 
@@ -1032,6 +1033,8 @@
       <i class="fas fa-bars" aria-hidden="true"></i>
     </button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="../assets/js/PixelBlast.js"></script>
     <script src="../assets/js/global.js"></script>
     <script src="../assets/js/navegacao/sidebar.js"></script>
     <script src="../assets/js/navegacao/navegacao.js"></script>
@@ -1058,6 +1061,5 @@
         });
       });
     </script>
-    
   </body>
 </html>

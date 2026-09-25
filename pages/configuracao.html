@@ -347,6 +347,92 @@
           padding: 16px 18px 18px;
         }
       }
+
+      .atalho-tema-config {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 20px 24px 24px;
+        padding: 22px;
+        border: 1px solid var(--cor-borda);
+        border-radius: 16px;
+        background: linear-gradient(145deg, var(--cor-card), color-mix(in srgb, var(--cor-card) 86%, var(--cor-primaria)));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 24px rgba(0, 0, 0, 0.08);
+      }
+      .atalho-tema-config .aparencia-bloco-heading {
+        align-items: center;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--cor-borda);
+      }
+      .atalho-tema-config .aparencia-bloco-heading .opcao-titulo { font-size: 1rem; letter-spacing: .01em; }
+      .atalho-tema-config .aparencia-bloco-heading .opcao-descricao { max-width: none; }
+      .atalho-tema-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: auto;
+        color: var(--cor-texto);
+        font: 600 0.85rem var(--font-corpo);
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .atalho-tema-toggle input { width: 18px; height: 18px; accent-color: var(--cor-primaria); cursor: pointer; }
+      .atalho-tema-config-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .atalho-tema-config-grid label {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        color: var(--cor-texto-muted);
+        font: 600 0.82rem var(--font-corpo);
+        letter-spacing: .015em;
+      }
+      .atalho-tema-config-grid select {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 10px 12px;
+        border: 1px solid var(--cor-borda);
+        border-radius: 10px;
+        background: var(--cor-lateral);
+        color: var(--cor-texto);
+        font: 500 0.85rem var(--font-corpo);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        transition: border-color .18s ease, box-shadow .18s ease;
+      }
+      .atalho-tema-config-grid select:focus-visible { outline: none; border-color: var(--cor-primaria); box-shadow: 0 0 0 3px color-mix(in srgb, var(--cor-primaria) 18%, transparent); }
+      .atalho-tema-previa { display: flex; flex-direction: column; gap: 10px; }
+      .atalho-tema-previa-titulo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--cor-texto);
+        font: 600 0.82rem var(--font-corpo);
+      }
+      .atalho-tema-previa-titulo::after {
+        content: "AO VIVO";
+        padding: 3px 7px;
+        border: 1px solid color-mix(in srgb, var(--cor-primaria) 35%, transparent);
+        border-radius: 999px;
+        color: var(--cor-texto-destaque);
+        background: color-mix(in srgb, var(--cor-primaria) 12%, transparent);
+        font-size: .62rem;
+        letter-spacing: .06em;
+      }
+      .atalho-tema-preview-stage { min-height: 128px; border-style: solid; box-shadow: inset 0 1px 14px rgba(0, 0, 0, .06); }
+      @media (max-width: 900px) {
+        .atalho-tema-config-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 600px) {
+        .atalho-tema-config { margin: 16px; padding: 16px; }
+        .atalho-tema-config .aparencia-bloco-heading { flex-wrap: wrap; }
+        .atalho-tema-toggle { margin-left: 41px; }
+        .atalho-tema-config-grid { grid-template-columns: 1fr; }
+      }
+
       /* Linha de opção */
 
       .opcao-config {
@@ -1779,6 +1865,56 @@
                   </button>
                 </div>
               </div>
+
+              <div class="atalho-tema-config" aria-labelledby="atalhoTemaTitulo">
+                <div class="aparencia-bloco-heading">
+                  <span class="aparencia-bloco-icon aparencia-bloco-icon-muted"><i class="fas fa-toggle-on"></i></span>
+                  <div>
+                    <span class="opcao-titulo" id="atalhoTemaTitulo">Atalho de tema</span>
+                    <span class="opcao-descricao">Personalize o acesso rápido ao tema em todas as páginas.</span>
+                  </div>
+                  <label class="atalho-tema-toggle" for="atalhoTemaAtivo">
+                    <input id="atalhoTemaAtivo" type="checkbox" />
+                    <span>Ativado</span>
+                  </label>
+                </div>
+                <div class="atalho-tema-config-grid">
+                  <label>Estilo
+                    <select id="atalhoTemaEstilo">
+                      <option value="cristal-magico">Cristal Mágico</option>
+                      <option value="circular">Circular</option>
+                      <option value="sol-lua">Sol/Lua</option>
+                      <option value="gif">GIF</option>
+                      <option value="minimalista">Minimalista</option>
+                    </select>
+                  </label>
+                  <label>Posição
+                    <select id="atalhoTemaPosicao">
+                      <option value="superior-direito">Superior direito</option>
+                      <option value="inferior-direito">Inferior direito</option>
+                      <option value="inferior-esquerdo">Inferior esquerdo</option>
+                      <option value="barra-lateral-inferior">Barra lateral — inferior</option>
+                    </select>
+                  </label>
+                  <label>Tamanho
+                    <select id="atalhoTemaTamanho">
+                      <option value="pequeno">Pequeno</option>
+                      <option value="medio">Médio</option>
+                      <option value="grande">Grande</option>
+                    </select>
+                  </label>
+                  <label>Comportamento
+                    <select id="atalhoTemaComportamento">
+                      <option value="claro-escuro">Claro ↔ Escuro</option>
+                      <option value="claro-escuro-sistema">Claro → Escuro → Sistema</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="atalho-tema-previa">
+                  <span class="atalho-tema-previa-titulo">Pré-visualização em tempo real</span>
+                  <div class="atalho-tema-preview-stage" id="atalhoTemaPreview"></div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -2958,6 +3094,122 @@
       });
     </script>
 
+   <script>
+  // Preferências do atalho global de tema — persistidas apenas no dispositivo.
+  document.addEventListener("DOMContentLoaded", () => {
+    const controles = {
+      ativo: document.getElementById("atalhoTemaAtivo"),
+      estilo: document.getElementById("atalhoTemaEstilo"),
+      posicao: document.getElementById("atalhoTemaPosicao"),
+      tamanho: document.getElementById("atalhoTemaTamanho"),
+      comportamento: document.getElementById("atalhoTemaComportamento"),
+    };
+    const chaves = {
+      ativo: "pref_atalho_tema_ativo",
+      estilo: "pref_atalho_tema",
+      posicao: "pref_atalho_tema_posicao",
+      tamanho: "pref_atalho_tema_tamanho",
+      comportamento: "pref_atalho_tema_comportamento",
+      icone: "pref_icone_tema",
+    };
+    const padroes = {
+      estilo: "gif",
+      posicao: "superior-direito",
+      tamanho: "medio",
+      comportamento: "claro-escuro",
+    };
+
+    // ── Reconstrói o <select> de Estilo ───────────────────────────────────
+    // Opção 1: Pac-Man (estilo "gif" — troca claro/escuro).
+    // Opções 2..N: personagens do catálogo (estilo "imagem" + pref_icone_tema).
+    const reconstruirMenuEstilo = () => {
+      const select = controles.estilo;
+      if (!select || !window.AtalhoTema) return;
+
+      const personagens = window.AtalhoTema.listarPersonagens();
+      const iconeAtual = window.AtalhoTema.obterIcone();
+      const estiloAtualSalvo = localStorage.getItem(chaves.estilo);
+
+      // Limpa todas as opções antigas.
+      select.innerHTML = "";
+
+      // Opção Pac-Man → value "gif".
+      const optPacMan = document.createElement("option");
+      optPacMan.value = "gif";
+      optPacMan.textContent = "Pac-Man (claro/escuro)";
+      select.appendChild(optPacMan);
+
+      // Opções de personagens → value "imagem:<arquivo>".
+      personagens.forEach((p) => {
+        const opt = document.createElement("option");
+        opt.value = `imagem:${p.arquivo}`;
+        opt.textContent = p.nome;
+        select.appendChild(opt);
+      });
+
+      // Determina qual opção marcar como selecionada.
+      let valorSelecionado;
+      if (estiloAtualSalvo === "imagem") {
+        valorSelecionado = `imagem:${iconeAtual}`;
+        if (![...select.options].some((o) => o.value === valorSelecionado)) {
+          valorSelecionado = "gif";
+        }
+      } else {
+        valorSelecionado = "gif";
+      }
+      select.value = valorSelecionado;
+    };
+
+    // ── Estado inicial ────────────────────────────────────────────────────
+    controles.ativo.checked = localStorage.getItem(chaves.ativo) !== "false";
+    const textoEstadoAtalho = controles.ativo.parentElement.querySelector("span");
+    const atualizarTextoEstado = () => {
+      textoEstadoAtalho.textContent = controles.ativo.checked ? "Ativado" : "Desativado";
+    };
+    atualizarTextoEstado();
+
+    // Posição, Tamanho, Comportamento (não mudam).
+    ["posicao", "tamanho", "comportamento"].forEach((campo) => {
+      const salvo = localStorage.getItem(chaves[campo]) || padroes[campo];
+      if ([...controles[campo].options].some((opcao) => opcao.value === salvo)) {
+        controles[campo].value = salvo;
+      }
+    });
+
+    // Reconstrói o menu de Estilo com Pac-Man + personagens.
+    reconstruirMenuEstilo();
+
+    window.AtalhoTema?.criarPreview(document.getElementById("atalhoTemaPreview"));
+
+    // ── Salvamento ────────────────────────────────────────────────────────
+    const salvarAtalho = () => {
+      localStorage.setItem(chaves.ativo, String(controles.ativo.checked));
+      atualizarTextoEstado();
+
+      // Estilo: "gif" (Pac-Man) OU "imagem:<arquivo>" (personagem).
+      const valorEstilo = controles.estilo.value;
+      if (valorEstilo === "gif") {
+        localStorage.setItem(chaves.estilo, "gif");
+      } else if (valorEstilo.startsWith("imagem:")) {
+        const arquivo = valorEstilo.slice("imagem:".length);
+        localStorage.setItem(chaves.estilo, "imagem");
+        localStorage.setItem(chaves.icone, arquivo);
+      }
+
+      ["posicao", "tamanho", "comportamento"].forEach((campo) => {
+        localStorage.setItem(chaves[campo], controles[campo].value);
+      });
+
+      window.AtalhoTema?.sincronizar();
+    };
+
+    Object.values(controles).forEach((controle) => {
+      controle.addEventListener("change", salvarAtalho);
+    });
+
+    salvarAtalho();
+  }, { once: true });
+</script>
     <!-- PixelBlast Background Dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="../assets/js/PixelBlast.js"></script>

@@ -194,9 +194,6 @@
         });
     }
 
-    if (contador) contador.textContent = `${ofertas.length} ${ofertas.length === 1 ? 'oferta' : 'ofertas'}`;
-    // ... restante inalterado
-};
         if (contador) contador.textContent = `${ofertas.length} ${ofertas.length === 1 ? 'oferta' : 'ofertas'}`;
         if (atualizado) atualizado.textContent = dados.precos_simulados
             ? 'Preços simulados das lojas parceiras'

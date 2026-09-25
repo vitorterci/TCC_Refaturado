@@ -1,0 +1,184 @@
+/* ─── CRISTAL MÁGICO: ATALHO GLOBAL DE TEMA ──────────────────────────────── */
+
+.atalho-tema-cristal {
+  position: fixed;
+  top: 14px;
+  right: 18px;
+  z-index: 1100;
+  width: 54px;
+  height: 62px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  isolation: isolate;
+  transition: transform 0.2s ease, filter 0.25s ease;
+}
+
+.atalho-tema-cristal:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: brightness(1.12);
+}
+
+.atalho-tema-cristal:active {
+  transform: scale(0.96);
+}
+
+.cristal-magia {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  width: 36px;
+  height: 46px;
+  overflow: hidden;
+  clip-path: polygon(50% 0, 100% 25%, 86% 78%, 50% 100%, 14% 78%, 0 25%);
+  background: linear-gradient(145deg, #b8a7ff 0%, #5e42d4 42%, #0bc5df 100%);
+  box-shadow: 0 0 12px rgba(27, 205, 255, 0.75), 0 0 25px rgba(126, 73, 255, 0.5);
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.cristal-magia::before {
+  position: absolute;
+  inset: 1px;
+  content: '';
+  clip-path: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.38), transparent 35%, rgba(0, 225, 255, 0.2));
+}
+
+.cristal-faceta {
+  position: absolute;
+  display: block;
+  opacity: 0.75;
+  transition: background 0.35s ease, opacity 0.35s ease;
+}
+
+.cristal-faceta--superior {
+  top: 0;
+  left: 50%;
+  width: 18px;
+  height: 21px;
+  transform: translateX(-50%);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.cristal-faceta--esquerda {
+  top: 22px;
+  left: 0;
+  width: 19px;
+  height: 22px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 18% 70%);
+  background: rgba(83, 226, 255, 0.44);
+}
+
+.cristal-faceta--direita {
+  top: 22px;
+  right: 0;
+  width: 19px;
+  height: 22px;
+  clip-path: polygon(0 0, 100% 0, 82% 70%, 0 100%);
+  background: rgba(142, 91, 255, 0.62);
+}
+
+.cristal-faceta--inferior {
+  bottom: 0;
+  left: 50%;
+  width: 25px;
+  height: 19px;
+  transform: translateX(-50%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: rgba(0, 238, 255, 0.48);
+}
+
+.cristal-brilho {
+  position: absolute;
+  top: 5px;
+  left: 9px;
+  width: 7px;
+  height: 17px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  filter: blur(1px);
+  transform: rotate(32deg);
+}
+
+.cristal-particulas,
+.cristal-particulas::before,
+.cristal-particulas::after {
+  position: absolute;
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #8df5ff;
+  box-shadow: 0 0 8px #8df5ff;
+  content: '';
+}
+
+.cristal-particulas { top: 11px; right: 2px; }
+.cristal-particulas::before { top: 35px; right: 39px; }
+.cristal-particulas::after { top: 40px; right: -1px; width: 2px; height: 2px; }
+
+html.tema-claro .cristal-magia,
+body.tema-claro .cristal-magia {
+  background: linear-gradient(145deg, #fff2a6 0%, #f2aa27 46%, #e56b16 100%);
+  box-shadow: 0 0 12px rgba(255, 196, 56, 0.8), 0 0 25px rgba(241, 122, 24, 0.48);
+}
+
+html.tema-claro .cristal-faceta--esquerda,
+body.tema-claro .cristal-faceta--esquerda { background: rgba(255, 246, 178, 0.7); }
+html.tema-claro .cristal-faceta--direita,
+body.tema-claro .cristal-faceta--direita { background: rgba(220, 98, 16, 0.58); }
+html.tema-claro .cristal-faceta--inferior,
+body.tema-claro .cristal-faceta--inferior { background: rgba(255, 188, 41, 0.62); }
+html.tema-claro .cristal-particulas,
+body.tema-claro .cristal-particulas,
+html.tema-claro .cristal-particulas::before,
+body.tema-claro .cristal-particulas::before,
+html.tema-claro .cristal-particulas::after,
+body.tema-claro .cristal-particulas::after {
+  background: #ffe28a;
+  box-shadow: 0 0 8px #ffb52e;
+}
+
+.cristal-ativando .cristal-magia {
+  animation: cristal-rotacao 0.42s ease-in-out;
+}
+
+.cristal-ativando .cristal-particulas {
+  animation: cristal-particulas 0.42s ease-out;
+}
+
+@keyframes cristal-rotacao {
+  50% { transform: rotate(10deg) scale(1.08); }
+}
+
+@keyframes cristal-particulas {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.9) translate(4px, -5px); }
+}
+
+@media (max-width: 600px) {
+  .atalho-tema-cristal {
+    top: 9px;
+    right: 9px;
+    width: 46px;
+    height: 54px;
+    transform: scale(0.86);
+    transform-origin: top right;
+  }
+
+  .atalho-tema-cristal:hover { transform: scale(0.91); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atalho-tema-cristal,
+  .cristal-magia,
+  .cristal-faceta,
+  .cristal-particulas {
+    transition: none;
+    animation: none !important;
+  }
+}

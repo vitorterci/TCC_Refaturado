@@ -389,3 +389,120 @@ body.sidebar-fechada .hamburger-btn {
     padding: 10px;
   }
 }
+
+/* ─── Rodapé da sidebar: botão de tema (Cristal Mágico / GIFs) ─────────────
+   Fundo totalmente transparente: sem bordas, sem sombra base, sem
+   aparência nativa do <button>. O glow aparece apenas no hover/focus. */
+
+.sidebar-rodape {
+  margin-top: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.botao-tema-cristal {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 96px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--transition-fast) ease,
+              filter var(--transition-fast) ease;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.botao-tema-cristal img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  /* Sem filtro base — sem "caixa" de sombra ao redor do GIF. */
+  filter: none;
+  transition: filter var(--transition-fast) ease,
+              transform var(--transition-fast) ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  display: block;
+  background: transparent;
+}
+
+/* Glow/brilho somente no hover e no focus (feedback visual). */
+.botao-tema-cristal:hover img,
+.botao-tema-cristal:focus-visible img {
+  filter:
+    drop-shadow(0 0 6px rgba(46, 0, 230, 0.65))
+    drop-shadow(0 0 14px rgba(165, 180, 252, 0.55))
+    brightness(1.12);
+  transform: scale(1.04);
+}
+
+.botao-tema-cristal:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: -2px;
+  border-radius: var(--border-radius-sm);
+}
+
+.botao-tema-cristal.clicando img {
+  animation: cristalPulse 0.45s ease;
+}
+
+@keyframes cristalPulse {
+  0%   { transform: scale(1)    rotate(0deg);   filter: brightness(1.12); }
+  35%  { transform: scale(0.92) rotate(-4deg);  filter: brightness(1.45) drop-shadow(0 0 18px rgba(165,180,252,0.9)); }
+  70%  { transform: scale(1.06) rotate(3deg);   filter: brightness(1.25) drop-shadow(0 0 12px rgba(46,0,230,0.7)); }
+  100% { transform: scale(1)    rotate(0deg);   filter: brightness(1.12); }
+}
+
+/* Sidebar fechada (desktop): o rodapé ocupa toda a largura reduzida. */
+@media (min-width: 1025px) {
+  body.sidebar-fechada .barra-lateral .sidebar-rodape {
+    padding: 0;
+  }
+  body.sidebar-fechada .barra-lateral .botao-tema-cristal {
+    min-height: 80px;
+  }
+}
+
+/* Mobile: rodapé também ocupa toda a largura da sidebar. */
+@media (max-width: 1024px) {
+  .sidebar-rodape {
+    padding: 0;
+  }
+  .botao-tema-cristal {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .botao-tema-cristal {
+    min-height: 88px;
+  }
+}

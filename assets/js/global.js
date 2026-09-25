@@ -58,6 +58,7 @@ window.obterCaminhoImagem = function (imagem, slug) {
     const modulos = [
         'core/preferencias.js',
         'core/tema.js',
+        'core/atalho-tema.js',
         'core/contraste.js',
         'core/animacoes.js',
         

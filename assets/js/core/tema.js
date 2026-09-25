@@ -25,4 +25,21 @@ window.Preferencias.aplicarTema = function (tema) {
             document.body.classList.add('tema-claro');
         }
     }
+    window.AtalhoTema?.sincronizar();
 };
+
+(() => {
+    if (window.__temaSistemaInicializado) return;
+    window.__temaSistemaInicializado = true;
+    const mediaTemaSistema = window.matchMedia('(prefers-color-scheme: dark)');
+    const atualizarTemaDoSistema = () => {
+        if (localStorage.getItem('pref_tema') === 'sistema') {
+            window.Preferencias.aplicarTema('sistema');
+        }
+    };
+    if (typeof mediaTemaSistema.addEventListener === 'function') {
+        mediaTemaSistema.addEventListener('change', atualizarTemaDoSistema);
+    } else if (typeof mediaTemaSistema.addListener === 'function') {
+        mediaTemaSistema.addListener(atualizarTemaDoSistema);
+    }
+})();
